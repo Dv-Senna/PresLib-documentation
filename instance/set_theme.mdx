@@ -1,0 +1,23 @@
+# `pl::Instance<API>.setTheme(...)`
+
+## Definitions
+
+```cpp
+inline void setTheme(const pl::Theme &theme);
+```
+
+Change the current theme.
+
+### Paramaters
+
+ - `theme` : a constant reference to the theme you want to use
+
+## How it works
+
+You shouldn't be calling this function outside the constructor of a [themes](/docs/themes). Themes should call it for you, so you just have to stack allocate the theme you want to use.
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::Theme`](/docs/Theme)
+ - [`pl::themes`](/docs/themes)

@@ -1,0 +1,22 @@
+# `pl::Instance<API>.setRenderingCallback(...)`
+
+## Definitions
+
+```cpp
+inline void setRenderingCallback(pl::impl::Instance::RenderingCallback callback) noexcept;
+```
+
+Set the rendering callback.
+
+## Parameters
+
+ - `callback` : a function that will be call just before presenting rendering to the screen
+
+## How it works
+
+If you need to draw things customly, you can use this function. It's called synchronously, so thread safety shouldn't be a concern. Note that it is recommended to write your own block instead of using a custom rendering callback. This is because its drawing will always be on top of everything else. Note that you can set up custom overlay in your [themes](docs/themes) if you need to draw on top.
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::themes`](/docs/themes)

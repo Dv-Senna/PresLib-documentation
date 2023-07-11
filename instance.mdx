@@ -1,10 +1,10 @@
-# pl::Instance\<API\>
+# `pl::Instance<API>`
 
 ## How it works
 
 The instance is the main class of PresLib. It handles the life-cycle of the library and fonts with RAII. It also handles the rendering of the current slide, event, switching between slides and all global operations.
 
-This class uses what is called an *implementation* under the hood. You use only an interface that links directly to the implementation. Because of this, PresLib is capable of handling multiple graphics apis. You can even add you're own one. For the moment, only the basic renderer of SDL2 is handled, but OpenGL (and maybe Vulkan) will be supported in the future.
+This class uses what is called an *implementation* under the hood. You use only an interface that links directly to the implementation. Because of this, PresLib is capable of handling multiple graphics apis. You can even add you're own one. For the moment, only the basic renderer of [SDL2](https://www.libsdl.org/) is handled, but OpenGL (and maybe Vulkan) will be supported in the future.
 
 As written in the title of this page, `pl::Instance` take a template parameter, a [`pl::GraphicsApi`](/docs/graphics_api), an enum type. The template permits to specify the implementation you want to use. Note that every other [blocks](/docs/blocks) (and maybe other classes) also take a `pl::GraphicsApi` as template parameter, but usually, those classes also take the instance as constructor argument. Their template can be deduced by the compiler so you don't have to write it everywhere and you can easly change between graphics apis.
 
@@ -17,7 +17,7 @@ As written in the title of this page, `pl::Instance` take a template parameter, 
 | [run](/docs/instance/run)                                     | Run the presentation                                                                            |
 | [getHandler](/docs/instance/get_handler)                      | Get the handler used internally by the implementation. Type vary dependending on implementation |
 | [setRenderingCallback](/docs/instance/set_rendering_callback) | Permit to draw directly with the used implementation. Call after every other draws              |
-| [getWindow](/docs/instance/)                                  | Return the window handler. Type vary depending on the implementation                            |
+| [getWindow](/docs/instance/get_window)                        | Return the window handler. Type vary depending on the implementation                            |
 | [getWindowInfos](/docs/instance/get_window_infos)             | Return information about the window like the size or the title                                  |
 | [getImplementation](/docs/instance/get_implementation)        | Return the implementation used                                                                  |
 | [getFonts](/docs/instance/get_fonts)                          | Return the [font manager](/docs/font_manager)                                                   |
@@ -32,7 +32,6 @@ This class can't be copied or moved.
 ## Example
 
 ```cpp
-
 // ...
 
 int main(int, char *[])

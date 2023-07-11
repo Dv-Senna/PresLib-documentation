@@ -1,0 +1,13 @@
+# Global object
+
+## How it works
+
+Global object is a term used to refere a variable that can be use by every other classes. Because instancing variables outside of a function's scope is not recommended (it can lead to wrong order creation, memory leaks, dangling pointer and lots of other bad things), PresLib instantiate global variables in [`pl::Instance<API>`](/docs/instance). You can normally retrieve them with a getter. So each classes that need global variables **must** take a reference to the instance (or a pointer to the implementation) as an argument of their constructor.
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::Instance<API>.getHandler(...)`](/docs/instance/get_handler)
+ - [`pl::Instance<API>.getWindow(...)`](/docs/instance/get_window)
+ - [`pl::Instance<API>.getTheme(...)`](/docs/instance/get_theme)
+ - [`pl::Instance<API>.getFonts(...)`](/docs/instance/get_fonts)

@@ -1,0 +1,41 @@
+# `pl::Instance<API>.getImplementation(...)`
+
+## Definitions
+
+```cpp
+inline pl::impl::Instance *getImplementation() const noexcept;
+```
+
+Return a pointer to the implementation.
+
+### Returns
+
+ - A pointer to the implementation of [`pl::Instance`](/docs/instance)
+
+## How it works
+
+The implementation is a pointer because of polymorphism. This function won't tell you which implementation is used.
+
+## Example
+
+```cpp
+// ...
+
+pl::blocks::Ellipse<API>::Ellipse(pl::Instance &instance, /* ... */)
+{
+	// ...
+
+	this->m_impl = new pl::impl::SDL2_renderer::blocks::Ellipse(
+		instance.getImplementation(),
+		/* ... */
+	);
+
+	// ...
+}
+
+// ...
+```
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)

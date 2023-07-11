@@ -1,0 +1,34 @@
+# `pl::Instance<API>.getHandler(...)`
+
+## Definitions
+
+```cpp
+inline std::any getHandler() const noexcept;
+```
+
+Return a [global object](/docs/global_object) that is used as the main handler of the graphics api used.
+
+### Returns
+
+ - The main handler of the graphics api used. Its type depends on the api used
+
+## How it works
+
+All calls related to drawing in [SDL2](https://www.libsdl.org/) for example take an `SDL_Renderer*` as argument. They need to access a common "handler". Apis like [OpenGL](https://www.opengl.org/) don't need a global object like this, but this function while still return for example the `SDL_GLContext`.
+
+### Example
+
+```cpp
+// ...
+
+pl::impl::SDL2_renderer::blocks::Rectangle::render()
+{
+	// ...
+
+	SDL_RenderFillRectF(std::any_cast<SDL_Renderer*> (m_instance->getHandler()), /* ... */);
+
+	// ...
+}
+
+// ...
+```

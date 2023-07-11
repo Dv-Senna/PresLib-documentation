@@ -1,0 +1,33 @@
+# `pl::Instance<API>.Instance(...)`
+
+## Definitions
+
+```cpp
+Instance();
+```
+
+Initializes all dependencies and constructs the instance.
+
+
+## How it works
+
+The constructor of [`pl::Instance<API>`](docs/instance) chooses at compile time which implementation must be heap allocated. At runtime, it allocates the implementation which will set up its dependencies like [SDL2](https://www.libsdl.org/). It creates an environnement suitable to create the rest of the presentation's elements.
+
+## Example
+
+```cpp
+// ...
+
+int main(int, char *[])
+{
+	// ...
+
+	pl::Instance<pl::GraphicsApi::SDL2_renderer> instance {};
+
+	// ...
+}
+```
+
+## Related
+
+ - [pl::Instance<API>](/docs/instance)

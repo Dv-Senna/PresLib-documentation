@@ -1,0 +1,40 @@
+# `pl::Instance<API>.addSlide(...)`
+
+## Definitions
+
+```cpp
+inline void addSlide(pl::Slide *slide);
+```
+
+Add a slide to the presentation.
+
+### Parameters
+
+ - `slide` : a pointer to the [`pl::Slide<API>`](/docs/slide) to add to the presentation
+
+## How it works
+
+[`pl::Instance<API>`](/docs/instance) uses an `std::list<pl::Slide<API>*>` to keep track of all slides. This function is used to push back a new pointer of slide to this list. Even if this function take a pointer, **please use the stack to create a slide**. This pointer is here only to avoid copy and keep a "reference" of the slide.
+
+Note that you don't have to call this function yourself because `pl::Slide<API>` already call it for you when constructed.
+
+## Example
+
+```cpp
+// ...
+
+template <pl::GraphicsApi API>
+pl::Slide<API>::Slide(pl::Instance<API> &instance, pl::SlideFlags flags)
+{
+	// ...
+
+	instance.addSlide(this);
+}
+
+// ...
+```
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::Slide<API>`](/docs/slide)

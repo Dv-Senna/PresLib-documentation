@@ -1,0 +1,41 @@
+# `pl::Instance<API>.getTheme(...)`
+
+## Definitions
+
+```cpp
+inline const pl::Theme &getTheme() const noexcept;
+```
+
+Return a read-only reference to the currently used theme.
+
+### Returns
+
+ - The currently used theme. To get informations about the theme, please use [`pl::Theme.style`](/docs/theme/style)
+
+
+## How it works
+
+You can set a theme to use with [`pl::Instance<API>.setTheme(...)`](/docs/instance/set_theme). The theme is then apply to all newly created blocks. PresLib uses this function to retrieve informations about color, font and so on.
+
+## Example
+
+```cpp
+// ...
+
+int main(int, char *[])
+{
+	// ...
+
+	std::cout << "The current main color is : " << instance.getTheme().style.mainColor << std::endl;
+
+	// ...
+}
+
+// ...
+```
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::Theme`](/docs/theme)
+ - [`pl::Style`](/docs/style)

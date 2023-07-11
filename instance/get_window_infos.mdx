@@ -1,0 +1,39 @@
+# `pl::Instance<API>.getWindowInfos(...)`
+
+## Defintions
+
+```cpp
+inline const pl::utils::WindowInfos &getWindowInfos() const noexcept;
+```
+
+Return informations about the created window.
+
+### Returns
+
+ - informations about the created window stored in a [`pl::utils::WindowInfos`](/docs/utils/window_infos)
+
+## How it works
+
+Return informations like width, height, title and even flags used to create the window.
+
+## Example
+
+```cpp
+// ...
+
+int main(int, char *[])
+{
+	// ...
+
+	std::cout << "The window's title is '" << instance.getWindowInfos().title << "'" << std::endl;
+
+	// ...
+}
+
+// ...
+```
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::utils::WindowInfos`](/docs/utils/window_infos)

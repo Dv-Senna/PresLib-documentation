@@ -1,0 +1,21 @@
+# `pl::Instance<API>.getWindow(...)`
+
+## Definitions
+
+```cpp
+inline std::any getWindow() const noexcept;
+```
+
+Return a handler to the window.
+
+### Returns
+
+ - a handler to the window, typically `SDL_Window*`
+
+## How it works
+
+The window is created by the implementation and depend on the used graphics api (like SDL2_gpu, which will not be implemented). Most of the time, it will just be `SDL_Window*`
+
+## Related
+
+ - [`pl::Instance`](/docs/instance)

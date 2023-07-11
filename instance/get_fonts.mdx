@@ -1,0 +1,57 @@
+# `pl::Instance<API>.getFonts(...)`
+
+## Definitions
+
+```cpp
+inline pl::FontManager &getFonts() noexcept;
+```
+
+Return a reference to the font manager.
+
+### Returns
+
+ - A reference to the [`pl::FontManager`](/docs/font_manager) which is used to handle fonts life-cycle and usage
+
+## How it works
+
+PresLib uses a [global object](/docs/global_object) call the font manager to handle fonts. This function just allows you to access it. To learn more about fonts in PresLib, please read [this page](/docs/font_manager).
+
+## Examples
+
+### Add font
+```cpp
+// ...
+
+int main(int, char *[])
+{
+	// ...
+
+	instance.getFonts().add("arial", "arial.ttf");
+
+	// ...
+}
+```
+
+### Access font
+```cpp
+// ...
+
+pl::impl::SDL2_renderer::blocks::Text::Text(/* ... */)
+{
+	// ...
+
+	SDL_Surface *surface {TTF_RenderUTF8_Blended_Wrapped(
+		m_instance->getFonts().get(font, size), /* ... */
+	)};
+
+	// ...
+}
+
+// ...
+```
+
+
+## Related
+
+ - [`pl::Instance<API>`](/docs/instance)
+ - [`pl::FontManager`](/docs/font_manager)
